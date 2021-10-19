@@ -1,4 +1,7 @@
 package main
+
+import "math"
+
 //513.找树左下角的值
 func findBottomLeftValue(root *TreeNode) int {
 	res := 0
@@ -25,4 +28,36 @@ func findBottomLeftValue(root *TreeNode) int {
 		}
 	}
 	return res
+}
+//513.找树左下角的值
+//递归
+func findBottomLeftValue2(root *TreeNode) int {
+	if root.Left == nil && root.Right == nil {
+		return root.Val
+	}
+	maxDeep, res := math.MinInt32, 0
+	var findleftval func(root *TreeNode,deep int)
+	findleftval = func(root *TreeNode,deep int) {
+		//因为第一个进入的元素一定是最左边的所以不用进行判定最左 而是 判断叶子节点的深度
+		if root.Left == nil && root.Right == nil {
+			if deep > maxDeep {
+				res = root.Val
+				maxDeep = deep
+			}
+		}
+		if root.Left != nil {
+			deep++
+			findleftval(root.Left,deep)
+			deep--//回溯
+		}
+		if root.Right != nil {
+			deep++
+			findleftval(root.Right,deep)
+			deep--//回溯
+		}
+		return
+	}
+	findleftval(root,maxDeep)
+	return res
+
 }
