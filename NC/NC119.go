@@ -38,3 +38,33 @@ func GetLeastNumbers_Solution( input []int ,  k int ) []int {
 	}
 	return input[len(input)-k:]
 }
+
+
+func GetLeastNumbers_Solution2( input []int ,  k int ) []int {
+	if len(input) <= k {
+		return input
+	}
+	return QuickSort(input,0,len(input)-1,k)
+}
+func QuickSort(arr []int,start,end,k int)[]int{
+	i := start
+	j := end
+	for i < j {
+		for i < j && arr[j] >= arr[start] {
+			j--
+		}
+		for i < j && arr[i] <= arr[start] {
+			i++
+		}
+		arr[i],arr[j] = arr[j],arr[i]
+	}
+	//每次结束之后都必须进行首元素的交换，将基准元素进行交换S
+	arr[i],arr[start] = arr[start],arr[i]
+	if i > k {
+		return QuickSort(arr,start,i-1,k)
+	}
+	if i < k {
+		return QuickSort(arr,i+1,end,k)
+	}
+	return arr[:k]
+}
