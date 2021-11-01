@@ -21,7 +21,6 @@ func levelOrder( root *TreeNode ) [][]int {
 			}
 		}
 		res = append(res,tmp)
-
 	}
 	return res
 }
