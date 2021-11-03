@@ -30,7 +30,7 @@ func quickSortSelectK(arr []int, start,end int, k int)int {
 }
 func findk(arr []int,start,end int,k int)int{
 	if start <= end {
-		tmp := quickSort(arr,start,end,k) //获取到第tmp大的值为tmp
+		tmp := quickSortSelectK(arr,start,end,k) //获取到第tmp大的值为tmp
 		if tmp == k - 1{ //因为下标从0开始所以当等于k-1的时候返回
 			return arr[tmp]
 		}else if tmp < k - 1{ //如果tmp比k小那么左节点设置为tmp+1
