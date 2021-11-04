@@ -1,7 +1,5 @@
 package main
 //k个一组翻转链表
-package main
-import . "nc_tools"
 /*
  * type ListNode struct{
  *   Val int
