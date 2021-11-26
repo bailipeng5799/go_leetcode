@@ -8,4 +8,5 @@ func mirrorTree(root *TreeNode) *TreeNode {
 	root.Left = mirrorTree(root.Right)
 	root.Right = mirrorTree(tmp)
 	return root
+
 }
