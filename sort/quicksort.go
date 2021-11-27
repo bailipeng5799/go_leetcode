@@ -53,6 +53,33 @@ func partition(arr []int, left, right int) int {
 func swap(arr []int, i, j int) {
 	arr[i], arr[j] = arr[j], arr[i]
 }
+
+func quicksort(arr []int,start, end int){
+	if start < end {
+		i := start
+		j := end
+		mid := arr[(i+j)/2]
+		for i < j {
+			for arr[i] < mid {
+				i++
+			}
+			for arr[j] > mid {
+				j--
+			}
+			if i <= j { //不能是等于如果是=循环就不能正确截止 当存在两个元素的时
+				arr[i], arr[j] = arr[j], arr[i]
+				i++
+				j--
+			}
+		}
+		if start < j {
+			quicksort(arr,start,j)
+		}
+		if end > i {
+			quicksort(arr,i,end)
+		}
+	}
+}
 func main() {
 	arr := []int{1, 9, 10, 30, 2, 5, 45, 8, 63, 234, 12}
 	fmt.Println(QuickSort(arr))

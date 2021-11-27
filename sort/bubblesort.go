@@ -27,3 +27,4 @@ func main(){
 	max := GetMax(arr)
 	fmt.Println(result,max)
 }
+
